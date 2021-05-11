@@ -7,3 +7,21 @@ test('create Employee object ', () => {
     expect(employee.id).toBe('117');
     expect(employee.email).toBe('email@email.com');
 })
+
+test('get employee name', () => {
+    const employee = new Employee('David', '117', 'email@email.com');
+
+    expect(employee.getName()).toEqual(expect.stringContaining(employee.name));
+})
+
+test('get employee id', () => {
+    const employee = new Employee('David', '117', 'email@email.com');
+
+    expect(employee.getId()).toEqual(expect.stringContaining(employee.id));
+})
+
+test('get employee email', () => {
+    const employee = new Employee('David', '117', 'email@email.com');
+
+    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email));
+})
