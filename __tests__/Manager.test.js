@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee.js');
 const Manager = require('../lib/Manager.js');
 
-// mock's the data???
+// mock's the data
 jest.mock('../lib/Employee')
 
 test('creates manager object', () => {
