@@ -1,5 +1,7 @@
 // engineer html
 const generateCards = employeeArr => {
+    // console.log('is this the undefined?' + employeeArr);
+    // console.log(employeeArr.filter(role));
     return `
     ${employeeArr
         .filter(({ role }) => role === 'Manager')
@@ -22,7 +24,7 @@ const generateCards = employeeArr => {
      
     ${employeeArr
         .filter(({ role }) => role === 'Engineer')
-        .map(({name, id, email, role, github }) => {
+        .map(({name, id, email, role, github}) => {
         return `
         <div class="card col-sm-3 g-3">
         <div class="card-header">         
@@ -41,7 +43,7 @@ const generateCards = employeeArr => {
 
     ${employeeArr
         .filter(({ role }) => role === 'Intern')
-        .map(({name, id, email, role, school }) => {
+        .map(({name, id, email, role, school}) => {
         return `
         <div class="card col-sm-3 g-3">
         <div class="card-header">         
@@ -57,15 +59,12 @@ const generateCards = employeeArr => {
         `;
         })
     .join('')}
-
-
-
-
-        `;
+    `;
 }
 
 
 module.exports = employeeArr => {
+    
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -84,11 +83,8 @@ module.exports = employeeArr => {
     </header>
     <section class="container col-12" id="teamCard">
             <div class="row card-holder">
-               ${generateCards(employeeArr)}
-                  
-                  
-        </div>
-
+               ${generateCards(employeeArr)}             
+            </div>
     </section>
     <footer class="footer mt-auto py-3">
         <div class="container">

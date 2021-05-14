@@ -157,10 +157,10 @@ const promptUser = () => {
                 } else {
                     return employeeArr;
                 }
-            }            
+            }  
+                      
         })
-        .then(employeeArr => {
-            console.log(employeeArr);
+        .then(employeeArr => {                     
             return generateCards(employeeArr);                       
         })
         .then(pageHTML => {
@@ -178,4 +178,4 @@ const promptUser = () => {
         });
 }
 
-promptUser()
+promptUser();
