@@ -3,8 +3,8 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const Choices = require('inquirer/lib/objects/choices');
-
+const generateCards = require('./src/page-template.js');
+const fs = require('fs');
 const employeeArr = [];
 
 
@@ -105,12 +105,20 @@ const questions = [
     }
     
 ];
-const addAdditionalEmployees = () => {
-    inquirer
-        .prompt([
-            
-        ])
-        
+const writeFile = pageHTML => {  
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if(err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok:true,
+                message: 'File created!'
+            });
+        });
+    });      
     
 }
 
@@ -164,9 +172,11 @@ const promptUser = () => {
                 }
             }            
         })
-        .then(function(employeeArr) {
-            console.log(employeeArr)
-            
+        .then(employeeArr => {
+            return generateCards(employeeArr);                       
+        })
+        .then(pageHTML => {
+            return writeFile(pageHTML)
         })
 }
 
