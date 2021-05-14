@@ -1,62 +1,69 @@
 // engineer html
 const generateCards = employeeArr => {
     return `
-    <div class="card col-sm-3 g-3">
-        <div class="card-header">
-        ${employeeArr.map(({name, id, email, role, confirmAddEmployee, officeNumber, github, school }) => {
-            return `
-            ${employeeArr.name}
+    ${employeeArr
+        .filter(({ role }) => role === 'Manager')
+        .map(({name, id, email, role, officeNumber}) => {
+        return `
+        <div class="card col-sm-3 g-3">
+        <div class="card-header">         
+            ${name}
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">${employeeArr.id}</li>
-                <li class="list-group-item">${employeeArr.email}</li>
-                <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
+                <li class="list-group-item">${id}</li>
+                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item">${role}</li>
+                <li class="list-group-item">Office Number: ${officeNumber}</li>
             </ul>
         </div>
         `;
-        })}
+        })
+    .join('')}
+     
+    ${employeeArr
+        .filter(({ role }) => role === 'Engineer')
+        .map(({name, id, email, role, github }) => {
+        return `
         <div class="card col-sm-3 g-3">
-        <div class="card-header">
+        <div class="card-header">         
+            ${name}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${id}</li>
+                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item">${role}</li>
+                <li class="list-group-item"><a href="https://${github}" class="card-link">Github</a></li>
+            </ul>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
-        </ul>
-    </div>
-    `
-    for(let i = 0; i < employeeArr.length; i++) {
-        if(employeeArr[i].role === 'Manager') {
-            console.log('this is a manager');
-        } else if(employeeArr[i].role === 'Engineer'){
-            console.log('this is an engineer');
-        } else if(employeeArr[i].role === 'Intern'){
-            console.log('this is an Intern');
-        }
-    }
-}
-/* <div class="card col-sm-3 g-3">
-    <div class="card-header">
-    Featured
-    </div>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item"><a href="#" class="card-link">Card link</a></li>
-    </ul>
-</div>
+        `;
+        })
+    .join('')}
 
-// everyone else?
-<div class="card col-sm-3 g-3">
-    <div class="card-header">
-        Featured
+    ${employeeArr
+        .filter(({ role }) => role === 'Intern')
+        .map(({name, id, email, role, school }) => {
+        return `
+        <div class="card col-sm-3 g-3">
+        <div class="card-header">         
+            ${name}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${id}</li>
+                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item">${role}</li>
+                <li class="list-group-item">${school}</li>
+            </ul>
         </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        </ul>
-</div> */
+        `;
+        })
+    .join('')}
+
+
+
+
+        `;
+}
+
 
 module.exports = employeeArr => {
     return `

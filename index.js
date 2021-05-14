@@ -4,7 +4,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generateCards = require('./src/page-template.js');
-const fs = require('fs');
+const {writeFile, copyFile} = require('./utils/generate-site');
+
+
 const employeeArr = [];
 
 
@@ -105,22 +107,7 @@ const questions = [
     }
     
 ];
-const writeFile = pageHTML => {  
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/index.html', pageHTML, err => {
-            if(err) {
-                reject(err);
-                return;
-            }
 
-            resolve({
-                ok:true,
-                message: 'File created!'
-            });
-        });
-    });      
-    
-}
 
 
 const promptUser = () => {
@@ -173,11 +160,22 @@ const promptUser = () => {
             }            
         })
         .then(employeeArr => {
+            console.log(employeeArr);
             return generateCards(employeeArr);                       
         })
         .then(pageHTML => {
             return writeFile(pageHTML)
         })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+            return copyFile();
+        })
+        .then(copyFileResponse => {
+            console.log(copyFileResponse);
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 promptUser()
