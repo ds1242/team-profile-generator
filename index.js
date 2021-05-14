@@ -58,8 +58,44 @@ const questions = [
     {
         type: 'input',
         name: 'officeNumber',
-        message: "What is the manager's office number?",
-        when: (answers) => answers.role === 'Manager'
+        message: "What is the manager's office number? (required)",
+        when: (answers) => answers.role === 'Manager',
+        validate: officeNumber => {
+            if(officeNumber) {
+                return true;
+            } else {
+                console.log("Please enter the manager's office number.");
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "What is the engineers's github username?",
+        when: (answers) => answers.role === 'Engineer',
+        validate: github => {
+            if(github) {
+                return true;
+            } else {
+                console.log("Please enter the Engineer's github");
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: "What is the name of the school the intern attends? (required)",
+        when: (answers) => answers.role === 'Intern',
+        validate: school => {
+            if (school) {
+                return true;
+            } else {
+                console.log("Please enter the name of the school the intern attends.");
+                return false;
+            }
+        }
     },
     {
         type: 'confirm',
@@ -83,16 +119,15 @@ const promptUser = () => {
     
     return inquirer
         .prompt(questions)
-        .then(({name, id, email, role, confirmAddEmployee, officeNumber}) => {
+        .then(({name, id, email, role, confirmAddEmployee, officeNumber, github, school}) => {
             // setup manager when selected
             if(role === 'Manager') {
                 this.employee = new Manager(name, id, email, role);
                 this.employee.getRole();
+                // add office number to Manager Object
                 this.employee.getOfficeNumber(officeNumber);
                 // push to employee array
                 employeeArr.push(this.employee);
-
-                console.log(this.employee);
                 // check if another employee is needed
                 if(confirmAddEmployee) {
                     return promptUser();
@@ -103,6 +138,8 @@ const promptUser = () => {
                 // setup Engineer when selected
                 this.employee = new Engineer(name, id, email, role);
                 this.employee.getRole();
+                // add Engineer github to Engineer object
+                this.employee.getGitHub(github);
                 // push to employeeArr
                 employeeArr.push(this.employee);                
                 // check if another employee is needed
@@ -115,6 +152,8 @@ const promptUser = () => {
                 // set up Intern
                 this.employee = new Intern(name, id, email, role);
                 this.employee.getRole();
+                // add the school to the Intern object
+                this.employee.getSchool(school);
                 // push employee to the array
                 employeeArr.push(this.employee);
                 // check if another employee is needed
@@ -125,7 +164,10 @@ const promptUser = () => {
                 }
             }            
         })
-       
-    }
+        .then(function(employeeArr) {
+            console.log(employeeArr)
+            
+        })
+}
 
-promptUser();
+promptUser()
