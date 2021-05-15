@@ -13,7 +13,7 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item">Email: <a href="mailto: ${email}" class="card-link">${email}</a></li>
                 <li class="list-group-item"><i class="fas fa-mug-hot"></i> ${role}</li>
                 <li class="list-group-item">Office Number: ${officeNumber}</li>
             </ul>
@@ -32,7 +32,7 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item">Email: <a href="mailto: ${email}" class="card-link">${email}</a></li>
                 <li class="list-group-item"><i class="fas fa-laptop-code"></i> ${role}</li>
                 <li class="list-group-item"><i class="fab fa-github mr-2"></i>Github: <a href="https://${github}" class="card-link"> Profile </a></li>
             </ul>
@@ -51,7 +51,7 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link"> ${email}</a></li>
+                <li class="list-group-item">Email: <a href="mailto: ${email}" class="card-link"> ${email}</a></li>
                 <li class="list-group-item"><i class="fas fa-user-graduate"></i> ${role}</li>
                 <li class="list-group-item"><i class="fas fa-university"></i> ${school}</li>
             </ul>
