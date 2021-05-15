@@ -29,8 +29,14 @@ h1{
     font-size: 40px;
 }
 footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
     padding: 10px;
+    background-color: var(--primary_color);
+    color: white;
 }
 
 .card-holder{
