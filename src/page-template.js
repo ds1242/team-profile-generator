@@ -13,8 +13,8 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
-                <li class="list-group-item">${role}</li>
+                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item"><i class="fas fa-mug-hot"></i> ${role}</li>
                 <li class="list-group-item">Office Number: ${officeNumber}</li>
             </ul>
         </div>
@@ -32,9 +32,9 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
-                <li class="list-group-item">${role}</li>
-                <li class="list-group-item"><a href="https://${github}" class="card-link">Github</a></li>
+                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
+                <li class="list-group-item"><i class="fas fa-laptop-code"></i> ${role}</li>
+                <li class="list-group-item"><i class="fab fa-github mr-2"></i>Github: <a href="https://${github}" class="card-link"> Profile </a></li>
             </ul>
         </div>
         `;
@@ -51,9 +51,9 @@ const generateCards = employeeArr => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${id}</li>
-                <li class="list-group-item"><a href="mailto: ${email}" class="card-link">${email}</a></li>
-                <li class="list-group-item">${role}</li>
-                <li class="list-group-item">${school}</li>
+                <li class="list-group-item">Email: <a href="mailto:${email}" class="card-link"> ${email}</a></li>
+                <li class="list-group-item"><i class="fas fa-user-graduate"></i> ${role}</li>
+                <li class="list-group-item"><i class="fas fa-university"></i> ${school}</li>
             </ul>
         </div>
         `;
@@ -73,6 +73,7 @@ module.exports = employeeArr => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">  
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" href="./style.css" />
         <title>Team Profile</title>        
     </head>
